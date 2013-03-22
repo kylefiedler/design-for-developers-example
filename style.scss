@@ -1,0 +1,108 @@
+@import "bourbon/bourbon";
+
+$column: golden-ratio(1em, 3); // Column width
+$gutter: golden-ratio(1em, 1); // Gutter between each two columns
+$grid-columns: 4; // Total number of columns in the grid
+$max-width: em(1088); // Max-width of the outer container
+
+@import "neat/neat";
+@import "normalize";
+
+$sans-serif: $helvetica;
+$serif: $georgia;
+
+$base-font-family: $sans-serif;
+$header-font-family: $base-font-family;
+
+$base-font-size: 1em;
+$base-line-height: $base-font-size * 1.575;
+
+body {
+  @include outer-container;
+  padding: 2em;
+  font-size: $base-font-size;
+
+  p {
+    line-height: $base-line-height;
+  }
+
+  > header {
+    @include row();
+    margin-bottom: $base-line-height;
+    padding-bottom: em(24);
+    border-bottom: 1px solid #eee;
+
+    hgroup {
+      float: left;
+
+      h1 {
+        font-size: $base-font-size * 1.25;
+        line-height: em(25.2, 20);
+        @include inline-block;
+        margin: 0;
+      }
+
+      h2 {
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+        font-weight: 200;
+        @include inline-block;
+        margin: 0;
+      }
+    }
+
+    nav {
+      float: right;
+
+      ul {
+        line-height: $base-line-height;
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+        text-align: right;
+
+        li {
+          @include inline-block;
+          margin-right: 1em;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  > section {
+    @include span-columns(3);
+
+    hgroup {
+      h1 {
+        font-weight: 100;
+        font-size: em(36);
+        line-height: (em(25, 36) * 1.75);
+        margin: 0 0 $base-line-height;
+      }
+
+      h2 {
+        text-transform: uppercase;
+        font-size: $base-font-size;
+        letter-spacing: 1px;
+        line-height: $base-line-height;
+      }
+    }
+
+    img {
+      height: $base-line-height * 8;
+    }
+  }
+
+  > aside {
+    @include span-columns(1);
+    @include omega();
+  }
+
+  footer {
+    clear: both;
+  }
+}
